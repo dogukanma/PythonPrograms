@@ -18,7 +18,7 @@ checkUrls = []
 
 file = open("wordlist.txt").readlines()
 
-def find_subdomain(url):
+def domain_splitter(url):
   domain = ""
   if ("https://" in url):
     if("www" in url):
@@ -29,7 +29,10 @@ def find_subdomain(url):
     domain = url.split("www.")[1]
   else:
     domain = url
+  return domain
 
+def find_subdomain(url):
+  domain = domain_splitter(url)
   for link in file:
     fullUrl = "https://" + link.strip() + "." + domain
     print(fullUrl)
