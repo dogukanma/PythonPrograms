@@ -22,6 +22,8 @@ def print_check_urls():
     print("Check: " + check)
 
 def find_directories(url):
+  if("https://" not in url and "http://" not in url):
+    raise Exception("Invalid URL.")
   for line in file:
     word = line.strip()
     newUrl = url + "/" + word
